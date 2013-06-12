@@ -11,7 +11,7 @@ class PostsController < ApplicationController
  # end
 
 def index
-@posts = Post.pending.newest.page
+@posts = Post.noimage.pending.newest.page
 
   respond_to do |format|
     format.html # index.html.erb
@@ -95,6 +95,12 @@ end
       end
     end
   end
+
+
+
+
+
+
 
   # DELETE /posts/1
   # DELETE /posts/1.json

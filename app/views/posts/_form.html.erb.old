@@ -1,4 +1,4 @@
-<%= form_for @post, :html => {:multipart => true} do |f| %>
+<%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -23,13 +23,17 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+    <%= f.label :imageurl %><br />
+    <%= f.text_field :imageurl %>
+  </div>
   
-<%= image_tag @post.productimage_url.to_s %>
-<br>
+
   <div class="field">
     <%= f.label :uploadimage %><br />
-<%= f.file_field :productimage %>  
+<%= f.text_field :image %>  
 </div>
+
 
 <div class="field">
     <%= f.label :producturl %><br />
@@ -43,4 +47,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
