@@ -39,7 +39,13 @@
     <%= f.label :sku %><br />
     <%= f.text_field :sku %>
   </div>
-  <div class="actions">
+
+  <div class="field">
+    <%= f.label :user %><br />
+<%= f.hidden_field :email, :value => current_user.email %>  
+</div>
+
+<div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

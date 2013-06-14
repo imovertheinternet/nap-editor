@@ -12,6 +12,9 @@ class PostsController < ApplicationController
 
 def index
 @posts = Post.noimage.pending.newest.page
+@foo = "bar"
+#@user = User.find(params[:email])
+#@posts2 = @user.posts
 
   respond_to do |format|
     format.html # index.html.erb
@@ -39,7 +42,7 @@ end
 
 def show
   @post = Post.find(params[:id])
-
+@user = @post.email
   respond_to do |format|
     format.html # show.html.erb
     format.json { render json: @post }
@@ -84,8 +87,8 @@ end
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
-
-    respond_to do |format|
+@test = Post    
+respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }

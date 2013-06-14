@@ -1,6 +1,8 @@
 Myapp::Application.routes.draw do
 
 
+  devise_for :users
+
 #   root :to => 'posts#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

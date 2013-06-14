@@ -1,4 +1,17 @@
-<h1>NITROMOTHAFUCKINAPPLIANCEPARTS, YO</h1>
+<center><h1>NITROMOTHAFUCKINAPPLIANCEPARTS, YO</h1>
+<%# @post.user.each do |user| %>
+<%#= users.email.to_s %>
+<%# end %>
+<div id="user_nav">
+<% if user_signed_in? %>
+signed in as <%= current_user.email %>. not you?
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+<% else %>
+<%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+<% end %>
+</div>
+<br>
+</center>
 
 <table>
   <tr>
@@ -33,4 +46,4 @@
 
 
 
- <%#= link_to 'New Post', new_post_path %>
+ <%= link_to 'New Post', new_post_path %>

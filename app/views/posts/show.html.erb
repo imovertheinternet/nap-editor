@@ -15,10 +15,10 @@
   <%= @post.price %>
 </p>
 
-<p>
+<!-- <p>
   <b>Imageurl:</b>
   <%= @post.imageurl %>
-</p>
+</p> -->
 
 <p>
   <b>Producturl:</b>
@@ -31,5 +31,18 @@
 </p>
 
 
+
+
+
+
+
+
+<p>
+<b>User:</b>
+<%= @user %>
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+| <%= link_to("Previous Post", @post.previous_post) if @post.previous_post %>
+| <%= link_to("Next Post", @post.next_post) if @post.next_post %>
