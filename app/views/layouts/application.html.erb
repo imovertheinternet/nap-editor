@@ -2,13 +2,37 @@
 <html>
 <head>
   <title>Myapp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  
+<%= stylesheet_link_tag "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" %>
+<%= javascript_include_tag "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" %> 
+
+<%= csrf_meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
+<div class="container">
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <a class="brand" href="/">NitroApplianceParts, bitch</a>
+ <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+</div>
+</div>
+</div>
 
-<%= yield %>
-
+      <div class="container">
+           <div class="row"> 
+            <div class="span9">
+              <%= yield %>
+            </div>
+<div class="span3">
+<h2>test bro </h2>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.          
+</div>
+</div>
 </body>
 </html>

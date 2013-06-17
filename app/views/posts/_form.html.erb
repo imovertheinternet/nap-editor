@@ -1,52 +1,89 @@
-<%= form_for @post, :html => {:multipart => true} do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+
+  <div class="control-group">
+    <%= f.label :product, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :product, :size=> '50x20' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :product %><br />
-    <%= f.text_field :product %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :size => "50x10" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+ <!-- <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'text_field' %>
+    </div>
+  </div> 
+  <div class="control-group">
+    <%= f.label :imageurl, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :imageurl, :class => 'text_field' %>
+    </div>
+  </div> -->
+  <div class="control-group">
+    <%= f.label :producturl, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :producturl, :class => 'text_field' %>
+    </div>
   </div>
+  <div class="control-group">
+    <%= f.label :sku, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sku, :class => 'text_field' %>
+    </div>
+  </div>
+  <!-- <div class="control-group">
+    <%= f.label :postreview, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :postreview, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :adminreview, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :adminreview, :class => 'check_box' %>
+    </div>
+  </div> 
+  <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :image, :class => 'text_field' %>
+    </div>
+</div> -->
   
-<%= image_tag @post.productimage_url.to_s %>
-<br>
-  <div class="field">
-    <%= f.label :uploadimage %><br />
-<%= f.file_field :productimage %>  
-</div>
+<div class="control-group">
+    <%= f.label :uploadimage, :class => 'control-label' %>
+<div class="controls">
+<%= f.file_field :productimage %>
+</div></div>
 
-<div class="field">
-    <%= f.label :producturl %><br />
-    <%= f.text_field :producturl %>
+  <!-- <div class="control-group">
+    <%= f.label :productimage, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :productimage, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :sku %><br />
-    <%= f.text_field :sku %>
+-->
+
+  <div class="control-group">
+    <%#= f.label :user, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.hidden_field :email, :value => current_user.email %>
+<%#= f.hidden_field :email, :value => current_user.email %>
+
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :user %><br />
-<%= f.hidden_field :email, :value => current_user.email %>  
-</div>
 
-<div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                posts_path, :class => 'btn' %>
   </div>
 <% end %>
-

@@ -1,49 +1,65 @@
-<center><h1>NITROMOTHAFUCKINAPPLIANCEPARTS, YO</h1>
-<%# @post.user.each do |user| %>
-<%#= users.email.to_s %>
-<%# end %>
-<div id="user_nav">
+<%- model_class = Post -%>
+<div class="page-header">
 <% if user_signed_in? %>
 signed in as <%= current_user.email %>. not you?
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
 <% else %>
 <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
 <% end %>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
-<br>
-</center>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:product) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%#= model_class.human_attribute_name(:price) %></th>
+      <th><%#= model_class.human_attribute_name(:imageurl) %></th>
+      <th><%#= model_class.human_attribute_name(:producturl) %></th>
+      <th><%= model_class.human_attribute_name(:sku) %></th>
+      <th><%#= model_class.human_attribute_name(:postreview) %></th>
+      <th><%#= model_class.human_attribute_name(:adminreview) %></th>
+      <th><%#= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:productimage) %></th>
+      <th><%#= model_class.human_attribute_name(:email) %></th>
+      <th><%#= model_class.human_attribute_name(:email_id) %></th>
+      <th><%#= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
 
-<table>
-  <tr>
- <th>Id</th>
-<th>Sku</th>
-    <th>Product</th>
-    <th>Description</th>
-    <th>Price</th>
-    
-	<th>Producturl</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-<td><%= post.id %></td>
-<td><%= post.sku %></td>
-    <td><%= post.product %></td>
-    <td><%= post.description %></td>
-    <td><%= post.price %></td>
-    <td><%= post.producturl %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%#= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.id, post_path(post) %></td>
+        <td><%= post.product %></td>
+        <td><%= post.description %></td>
+        <td><%#= post.price %></td>
+        <td><%#= post.imageurl %></td>
+        <td><%#= post.producturl %></td>
+        <td><%= post.sku %></td>
+        <td><%#= post.postreview %></td>
+        <td><%#= post.adminreview %></td>
+        <td><%#= post.image %></td>
+        <td><%= post.productimage %></td>
+        <td><%#= post.email %></td>
+        <td><%#= post.email_id %></td>
+        <td><%#=l post.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_post_path(post), :class => 'btn btn-mini' %>
+          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      post_path(post),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-
-
- <%= link_to 'New Post', new_post_path %>
+<%#= link_to t('.new', :default => t("helpers.links.new")),
+            new_post_path,
+            :class => 'btn btn-primary' %>
