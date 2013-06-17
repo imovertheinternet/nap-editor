@@ -81,6 +81,55 @@
 
 
 
+
+
+       <!--Import the Aviary and Filepicker.io scripts-->
+<script src='http://feather.aviary.com/js/feather.js'></script>
+<script src='//api.filepicker.io/v1/filepicker.js'></script>
+<!--Your application-->
+<script type='text/javascript'>
+    //Setup Filepicker.io - to get an apikey, go to https://developers.filepicker.io/register/
+    filepicker.setKey('A1Y5HTkh6TEeq69CpIXclz');
+
+    //Setup Aviary
+    var featherEditor = new Aviary.Feather({
+        //Get an api key for Aviary at http://www.aviary.com/web-key
+        apiKey: 'kvs78lgyil6sxlc5',
+        apiVersion: 2,
+        onSave: function(imageID, newURL) {
+            //Export the photo to the cloud using Filepicker.io!
+            filepicker.export(newURL, {extension:'.png'});
+        },
+        appendTo: 'web_demo_pane'
+    });
+
+    //Giving a placeholder image while Aviary loads
+    var preview = document.getElementById('web_demo_preview');
+
+    //When the user clicks the button, import a file using Filepicker.io
+    var editPane = document.getElementById('start_web_demo');
+    editPane.onclick = function(){
+        filepicker.pick({mimetype: 'image/*'}, function(fpfile) {
+            //Showing the preview
+            preview.src = fpfile.url;
+
+            //Launching the Aviary Editor
+            featherEditor.launch({
+                image: preview,
+                url: fpfile.url
+            });
+        });
+    };
+</script> 
+
+
+
+
+
+
+
+
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
