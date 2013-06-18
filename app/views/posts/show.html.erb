@@ -12,10 +12,10 @@
   <dd><%= @post.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
   <dd><%= @post.price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:imageurl) %>:</strong></dt>
+  <!--<dt><strong><%= model_class.human_attribute_name(:imageurl) %>:</strong></dt>
   <dd><%= @post.imageurl %></dd>
   <dt><strong><%= model_class.human_attribute_name(:producturl) %>:</strong></dt>
-  <dd><%= @post.producturl %></dd>
+  <dd><%= @post.producturl %></dd> -->
   <dt><strong><%= model_class.human_attribute_name(:sku) %>:</strong></dt>
   <dd><%= @post.sku %></dd>
 <!--  <dt><strong><%= model_class.human_attribute_name(:postreview) %>:</strong></dt>
@@ -31,9 +31,6 @@
   <dt><strong><%#= model_class.human_attribute_name(:email_id) %>:</strong></dt>
   <dd><%= @post.email_id %></dd>i -->
 </dl>
-
-
-
 
 <!-- Load Feather code -->
 <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
@@ -62,12 +59,13 @@
 </script>
 
 <div id='injection_site'></div>
-
+<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
 <img id='image1' <%= image_tag @post.productimage_url.to_s %>
 
+
+<% end %>
 <!-- Add an edit button, passing the HTML id of the image and the public URL of the image -->
 <p><input type='image' src='http://images.aviary.com/images/edit-photo.png' value='Edit photo' onclick="return launchEditor('image1');" /></p>
-         
 
 
 

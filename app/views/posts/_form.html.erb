@@ -79,6 +79,13 @@
     </div>
   </div>
 
+<p>
+    <label>My Avatar URL:</label>
+    <%= image_tag(@post.productimage_url.to_s) %>
+    <%= f.text_field :productimage %> 
+  </p>
+
+
 
 
 
@@ -93,14 +100,14 @@
 <script type="text/javascript">
 
     var featherEditor = new Aviary.Feather({
-        apiKey: 'kvs78lgyil6sxlc5',
-        apiVersion: 2,
+apiKey: 'kvs78lgyil6sxlc5',        
+apiVersion: 2,
         tools: ['draw', 'stickers'],
         onSave: function(imageID, newURL) {
             var img = document.getElementById(imageID);
             img.src = newURL;
         },
-        postUrl: 'http://aqueous-everglades-3673.herokuapp.com/postimage/postimage.rb'
+        postUrl: 'http://aqueous-everglades-3673.herokuapp.com/postimage/postimage.php'
     });
 
     function launchEditor(id, src) {
@@ -113,13 +120,15 @@
 
 </script>                         
 
-<!-- Add an edit button, passing the HTML id of the image
-    and the public URL to the image -->
-<a href="#" onclick="return launchEditor('editableimage1', 
-    'http://example.com/public/images/goat.jpg');">Edit!</a>
+
+<!-- Add an edit button, passing the HTML id of the image and the public URL of the image -->
+<p><input type='image' src='http://images.aviary.com/images/edit-photo.png' value='Edit photo' onclick="return launchEditor('image1', 'http://images.aviary.com/imagesv5/feather_default.jpg');" /></p>
+
 
 <!-- original line of HTML here: -->
-<img id="editableimage1" src="http://example.com/public/images/goat.jpg"/>
+<img id='image1' src='http://images.aviary.com/imagesv5/feather_default.jpg'/>
+
+
 
 
 
