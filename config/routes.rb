@@ -1,6 +1,7 @@
 Myapp::Application.routes.draw do
 
 match '/postimage.rb', :to =>'public#postimage'
+match '/postimage', :to => redirect('/public/postimage.php')
 
   devise_for :users
 
