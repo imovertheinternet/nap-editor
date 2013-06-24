@@ -86,6 +86,9 @@
   </p>
 
 
+<%= filepicker_js_include_tag %>
+
+
 
 
 
@@ -107,7 +110,7 @@ apiVersion: 2,
             var img = document.getElementById(imageID);
             img.src = newURL;
         },
-        postUrl: '/test.php'
+        postUrl: '/postimage.rb'
     });
 
     function launchEditor(id, src) {

@@ -9,7 +9,8 @@ post "/save" do
     # get file name from URL
     file_name = params[:url].split("/").pop()
     # Write the file to the local filesystem
-    Dir.chdir("tmp")
+	Dir.mkdir(ENV["TMPDIR"]) unless (File.exists?(ENV["TMPDIR"]) && File.directory?(ENV["TMPDIR"]))
+    Dir.chdir("TMPDIR")
     File.open(file_name, 'w') {|f| f.write(image_from_web) }
     Dir.chdir("../")
 
