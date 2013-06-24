@@ -79,59 +79,20 @@
     </div>
   </div>
 
+
+<!--
 <p>
     <label>My Avatar URL:</label>
-    <%= image_tag(@post.productimage_url.to_s) %>
-    <%= f.text_field :productimage %> 
+    <#%= image_tag(@post.productimage_url.to_s) %>
+    <#%= f.text_field :productimage %> 
   </p>
 
 
-<%= filepicker_js_include_tag %>
 
 
 
 
-
-
-
-
-<!-- Load widget code -->
-<script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
-
-
-<!-- Instantiate the widget -->
-<script type="text/javascript">
-
-    var featherEditor = new Aviary.Feather({
-apiKey: 'kvs78lgyil6sxlc5',        
-apiVersion: 2,
-        tools: ['draw', 'stickers'],
-        onSave: function(imageID, newURL) {
-            var img = document.getElementById(imageID);
-            img.src = newURL;
-        },
-        postUrl: '/postimage.rb'
-    });
-
-    function launchEditor(id, src) {
-        featherEditor.launch({
-            image: id,
-            url: src
-        });
-        return false;
-    }
-
-</script>                         
-
-
-<!-- Add an edit button, passing the HTML id of the image and the public URL of the image -->
-<p><input type='image' src='http://images.aviary.com/images/edit-photo.png' value='Edit photo' onclick="return launchEditor('image1', 'http://images.aviary.com/imagesv5/feather_default.jpg');" /></p>
-
-
-<!-- original line of HTML here: -->
-<img id='image1' src='http://images.aviary.com/imagesv5/feather_default.jpg'/>
-
-
+-->
 
 
 
@@ -141,7 +102,7 @@ apiVersion: 2,
 
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit nil, :name => "save_option_a", :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 posts_path, :class => 'btn' %>
   </div>

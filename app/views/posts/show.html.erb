@@ -1,3 +1,4 @@
+
 <%- model_class = Post -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
@@ -62,7 +63,6 @@
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
 <img id='image1' <%= image_tag @post.productimage_url.to_s %>
 
-
 <% end %>
 <!-- Add an edit button, passing the HTML id of the image and the public URL of the image -->
 <p><input type='image' src='http://images.aviary.com/images/edit-photo.png' value='Edit photo' onclick="return launchEditor('image1');" /></p>
@@ -70,18 +70,21 @@
 
 
 
+<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+
+<div class="control-group">
+<%= f.label :remote_productimage_url, "Copy & Past image URL HERE:", :class => 'control-label' %>
+<div class="controls">
+<%= f.text_field :remote_productimage_url %>
+</div></div>
+
+<div class="form-actions">
+<%= f.submit "Save and go to next Product", :name => "save_option_b", :class => 'btn btn-primary'  %></div>
+<% end %>
 
 
 
-
-
-
-
-
-
-
-
-
+<!--
 <div class="form-actions">
   <%= link_to t('.home', :default => t("helpers.links.back")),
               posts_path, :class => 'btn'  %>
@@ -94,13 +97,10 @@
               :class => 'btn btn-danger' %>
 
 
-<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
-<div class="form-actions">
-<%= f.submit nil, :class => 'btn btn-primary' %></div><% end %>
  
 
 <%= link_to t('.next', :default => t("helpers.links.next")),
               edit_post_path(@post.next_post), :class => 'btn' %>
 
 
-</div>
+</div>-->

@@ -3,7 +3,7 @@
 <head>
   <title>Myapp</title>
   
-<%= stylesheet_link_tag "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" %>
+<%= stylesheet_link_tag "bootstrap-combined.min.css" %>
 <%= javascript_include_tag "application" %> 
 <%= csrf_meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +13,11 @@
 <div class="container">
 <div class="navbar navbar-inverse">
   <div class="navbar-inner">
-    <a class="brand" href="/">NitroApplianceParts, bitch</a>
+    <a class="brand" href="/">NitroApplianceParts</a>
  <ul class="nav">
       <li><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
+   <!--   <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li> -->
     </ul>
 </div>
 </div>
@@ -25,21 +25,30 @@
 
       <div class="container">
            <div class="row"> 
-            <div class="span9">
+
+
+<center><% if user_signed_in? %>
+signed in as <%= current_user.email %>. not you?
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+<% else %>
+<%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+<% end %></center>
+
+
+<div class="span12">
+<center><h2>Directions </h2>
+Start by clicking edit. Then edit the description if necessary and upload new image.  After hitting the "Update Post" button you will be brought to a new screen. Click the "Edit Photo" button to edit the picture as required and save. Then right click the image and copy the URL of the newly generated picture and paste it into the section labeled, "Copy and paste URL here:" then click the blue button labeled, "Save and go to next product" to continue on until done.
+</div></center>
+
+
+
+
+            <div class="span12">
               <%= yield %>
             </div>
-<div class="span3">
-<h2>Directions </h2>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.          
 </div>
 </div>
 
-
-<footer>
-  <div class="container">
-    wat
-  </div>
-</footer>
 
 </body>
 </html>

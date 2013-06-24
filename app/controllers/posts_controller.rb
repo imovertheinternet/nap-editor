@@ -91,12 +91,19 @@ end
     @post = Post.find(params[:id])
 @test = Post    
 respond_to do |format|
-      if @post.update_attributes(params[:post])
+      
+
+if params[:save_option_a]        
+    
+@post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+
+else params[:save_option_b] 
+@post.update_attributes(params[:post]) 
+format.html { redirect_to edit_post_path(@post.next_post), notice: 'Post was successfully updated.' }
+        format.json { head :no_content }       
+
       end
     end
   end

@@ -3,7 +3,7 @@ has_and_belongs_to_many :users
 
 #  belongs_to :user
 
-  attr_accessible :description, :imageurl, :price, :product, :producturl, :sku, :postreview, :adminreview, :image, :productimage, :email
+  attr_accessible :description, :imageurl, :price, :product, :producturl, :sku, :postreview, :adminreview, :image, :productimage, :email, :remote_productimage_url
   mount_uploader :productimage, ProductimageUploader
 
 

@@ -1,11 +1,12 @@
 <%- model_class = Post -%>
 <div class="page-header">
-<% if user_signed_in? %>
+<!-- <center><% if user_signed_in? %>
 signed in as <%= current_user.email %>. not you?
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
 <% else %>
 <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-<% end %>
+<% end %></center>
+-->
 <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 <table class="table table-striped">
