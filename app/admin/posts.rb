@@ -1,16 +1,16 @@
 ActiveAdmin.register Post do
 
-#index do
-#column :id
-#column :product
-#column :description
-#column :price
-#column :producturl
-#column :sku
-#column :updated_at
-#column :adminreview
-#column :email
-
+index do
+column :id
+column :product
+column :description
+column :price
+column :producturl
+column :sku
+column :updated_at
+column :adminreview
+column :email
+end
 
 #column :email_id
 #column :updated_at
