@@ -37,16 +37,18 @@
 <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
 
 <!-- Instantiate Feather -->
+
 <script type='text/javascript'>
    var featherEditor = new Aviary.Feather({
        apiKey: 'kvs78lgyil6sxlc5',
        apiVersion: 2,
        tools: 'all',
        appendTo: '',
-       onSave: function(imageID, newURL) {
+       onSave: function (imageID, newURL) {
            var img = document.getElementById(imageID);
            img.src = newURL;
-       },
+fillform();   
+     },
        onError: function(errorObj) {
            alert(errorObj.message);
        }
@@ -58,24 +60,36 @@
       return false;
    }
 </script>
-
 <div id='injection_site'></div>
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
 <img id='image1' <%= image_tag @post.productimage_url.to_s %>
-
 <% end %>
 <!-- Add an edit button, passing the HTML id of the image and the public URL of the image -->
 <p><input type='image' src='http://images.aviary.com/images/edit-photo.png' value='Edit photo' onclick="return launchEditor('image1');" /></p>
 
 
 
+<script type="text/javascript" language="JavaScript">
+var fillform = function ()
+{
+setTimeout(function()
+{
+var bob = document.getElementById('image1').src;
+document.getElementById("textbox1").value=bob
+}, 1000);
+}
+</script>
+
+
+
+
+
 
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
-
 <div class="control-group">
-<%= f.label :remote_productimage_url, "Copy & Past image URL HERE:", :class => 'control-label' %>
+<%#= f.label :remote_productimage_url, "Copy & Past image URL HERE:", :class => 'control-label' %>
 <div class="controls">
-<%= f.text_field :remote_productimage_url %>
+<%= f.hidden_field :remote_productimage_url, :id => "textbox1" %>
 </div></div>
 
 <div class="form-actions">
